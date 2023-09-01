@@ -1,94 +1,21 @@
 ![image](https://github.com/mehpree/CryptoClustering/assets/131678606/156c4619-97c8-4a19-a012-82f65eeb193f)
-# CryptoClustering
+# CryptoClustering Project: Unveiling Cryptocurrency Price Change Patterns
 
-In this challenge, you’ll use your knowledge of Python and unsupervised learning to predict if cryptocurrencies are affected by 24-hour or 7-day price changes.
-**Instructions**
+Greetings! I'm excited to share my CryptoClustering project with you. In this adventure, I dove deep into the world of cryptocurrencies using Python and the power of unsupervised learning. My objective? To gain a profound understanding of how 24-hour and 7-day price changes affect various cryptocurrencies. Let me walk you through my journey:
 
- - Rename the Crypto_Clustering_starter_code.ipynb file as   
-    Crypto_Clustering.ipynb.
- - Load the crypto_market_data.csv into a DataFrame.
- - Get the summary statistics and plot the data to see what the data   
-    looks like before proceeding.
+## My Journey Thus Far
+* Exploring the Data: I began by immersing myself in the crypto_market_data.csv dataset, an invaluable source of cryptocurrency insights. Summarizing statistics and creating visualizations allowed me to grasp the data's essence and uncover initial patterns.
+* Data Preprocessing: To make my data analysis-ready, I harnessed the capabilities of the StandardScaler() from scikit-learn. This crucial step ensured my data was normalized and ready for more sophisticated analysis.
+* Clustering with Original Scaled Data: Armed with normalized data, I employed the elbow method to determine the ideal number of clusters (k) using the original scaled data. This technique allowed me to unveil hidden structures within the dataset. The visual elbow curve helped me pinpoint the best k value.
+* K-means Clustering with Original Scaled Data: Armed with the optimal k value, I put K-means clustering to work, grouping cryptocurrencies based on their intrinsic features. Visualizing the clusters offered me insights into how different cryptocurrencies exhibit similar behaviors.
+* Optimizing with PCA: Enter Principal Component Analysis (PCA). This technique enabled me to reduce the data's dimensions while retaining meaningful insights. Understanding the explained variance of the principal components guided my analysis in this compressed-feature space.
+* PCA Data Clustering: Applying the elbow method on the PCA data, I uncovered the ideal k value for this reduced-feature space. This approach shed a fresh light on clustering patterns.
+* K-means Clustering with PCA Data: Armed with the optimal k value from PCA, I revisited K-means clustering on the PCA data. A new scatter plot allowed me to visualize the impact of reduced features on the clustering outcome.
 
-**Prepare the Data**
+## What Does It All Mean?
+My project unveils the intricate relationships between cryptocurrencies and their price changes. By harnessing advanced techniques such as K-means clustering and PCA, I've demystified patterns that might remain concealed at first glance. Through my project, you'll witness the prowess of Python in data analysis and unsupervised learning, offering profound insights into the complex world of cryptocurrencies.
 
- - Use the StandardScaler() module from scikit-learn to normalize the
-   data from the CSV file.
-   
-
- - Create a DataFrame with the scaled data and set the "coin_id" index  
-   from the original DataFrame as the index for the new DataFrame.
-	  - The first five rows of the scaled DataFrame should appear as follows:
-      ![image](https://github.com/mehpree/CryptoClustering/assets/131678606/be638024-091a-485c-8d86-c0f21151edd2)
-
-
-The first five rows of the scaled DataFrame
-
-**Find the Best Value for k Using the Original Scaled DataFrame**
-Use the elbow method to find the best value for k using the following steps:
-
--   Create a list with the number of k values from 1 to 11.
--   Create an empty list to store the inertia values.
--   Create a  `for`  loop to compute the inertia with each possible value of  `k`.
--   Create a dictionary with the data to plot the elbow curve.
--   Plot a line chart with all the inertia values computed with the different values of  `k`  to visually identify the optimal value for  `k`.
--   Answer the following question in your notebook: What is the best value for  `k`?
-
-**Cluster Cryptocurrencies with K-means Using the Original Scaled Data**
-Use the following steps to cluster the cryptocurrencies for the best value for k on the original scaled data:
-
-Initialize the K-means model with the best value for k.
--   Initialize the K-means model with the best value for  `k`.
--   Fit the K-means model using the original scaled DataFrame.
--   Predict the clusters to group the cryptocurrencies using the original scaled DataFrame.
--   Create a copy of the original data and add a new column with the predicted clusters.
--   Create a scatter plot using hvPlot as follows:
-    -   Set the x-axis as "PC1" and the y-axis as "PC2".
-    -   Color the graph points with the labels found using K-means.
-    -   Add the "coin_id" column in the  `hover_cols`  parameter to identify the cryptocurrency represented by each data point.
-
-**Optimize Clusters with Principal Component Analysis**
-Using the original scaled DataFrame, perform a PCA and reduce the features to three principal components.
-
--   Using the original scaled DataFrame, perform a PCA and reduce the features to three principal components.
-    
--   Retrieve the explained variance to determine how much information can be attributed to each principal component and then answer the following question in your notebook:
-    
-    -   What is the total explained variance of the three principal components?
--   Create a new DataFrame with the PCA data and set the "coin_id" index from the original DataFrame as the index for the new DataFrame.
-    
-    -   The first five rows of the PCA DataFrame should appear as follows:
-       ![image](https://github.com/mehpree/CryptoClustering/assets/131678606/265023ca-d246-4e3f-be71-2df41efcaac4)
-
-    
-**Find the Best Value for k Using the PCA Data**
-
-
-Use the elbow method on the PCA data to find the best value for  `k`  using the following steps:
-
--   Create a list with the number of k-values from 1 to 11.
--   Create an empty list to store the inertia values.
--   Create a  `for`  loop to compute the inertia with each possible value of  `k`.
--   Create a dictionary with the data to plot the Elbow curve.
--   Plot a line chart with all the inertia values computed with the different values of  `k`  to visually identify the optimal value for  `k`.
--   Answer the following question in your notebook:
-    -   What is the best value for  `k`  when using the PCA data?
-    -   Does it differ from the best k value found using the original data?
- 
-**Cluster Cryptocurrencies with K-means Using the PCA Data**
-
-Use the following steps to cluster the cryptocurrencies for the best value for  `k`  on the PCA data:
-
--   Initialize the K-means model with the best value for  `k`.
--   Fit the K-means model using the PCA data.
--   Predict the clusters to group the cryptocurrencies using the PCA data.
--   Create a copy of the DataFrame with the PCA data and add a new column to store the predicted clusters.
--   Create a scatter plot using hvPlot as follows:
-    -   Set the x-axis as "price_change_percentage_24h" and the y-axis as "price_change_percentage_7d".
-    -   Color the graph points with the labels found using K-means.
-    -   Add the "coin_id" column in the  `hover_cols`  parameter to identify the cryptocurrency represented by each data point.
--   Answer the following question:
-    -   What is the impact of using fewer features to cluster the data using K-Means?
+Whether you're a fellow data enthusiast, a cryptocurrency aficionado, or simply curious about how data can unearth concealed stories, my project has something captivating to offer. Join me in exploring this journey, and let's uncover the hidden dynamics of cryptocurrency price changes together. Happy exploration!
       
 **References**
 Data for this dataset was generated by edX Boot Camps LLC, and is intended for educational purposes only.
